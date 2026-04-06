@@ -3,7 +3,7 @@ Perfect! And I'll follow the plan strictly from now — one day, one topic, sect
 ---
 
 # 🔵 PHASE 1 — DAY 4
-# AD Logs & Event IDs — Navi's Complete Playbook
+# AD Logs & Event IDs — Complete Playbook
 ### *"Logs are the only witness to a crime that leaves no fingerprints"*
 
 ---
