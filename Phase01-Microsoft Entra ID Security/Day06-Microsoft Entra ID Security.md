@@ -200,10 +200,10 @@ THAT is why sign-in logs are so powerful
 Reading a Sign-in Log Entry — Full Breakdown
 This is what you partially looked at before. Now let's read every field:
 SAMPLE SIGN-IN LOG ENTRY — Gani's normal login:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━
 
 BASIC INFO TAB:
-──────────────────────────────────────────────────────
+─
 Date:               05/04/2026  09:14:32 IST
 User:               gani@securecorp.com
 User type:          Member
@@ -214,9 +214,9 @@ Location:           Bangalore, KA, IN      ← expected ✅
 Status:             Success                ✅
 Conditional Access: Success                ✅
 
-──────────────────────────────────────────────────────
+──────
 AUTHENTICATION DETAILS TAB:           ← YOU NEED THIS TAB
-──────────────────────────────────────────────────────
+──────
 Authentication requirement: Multifactor auth  ✅
 MFA result:               MFA satisfied       ✅
 Auth method:              Authenticator app   ✅
@@ -224,18 +224,18 @@ Token issuer type:        Azure AD
 Sign-in identifier:       gani@securecorp.com
 Resource:                 Microsoft Teams
 
-──────────────────────────────────────────────────────
+─────
 CONDITIONAL ACCESS TAB:               ← CRITICAL FOR SOC
-──────────────────────────────────────────────────────
+─────
 CA001-Block-Legacy-Auth:    Not applied (modern auth)
 CA002-Require-MFA-All:      ✅ Applied — Satisfied
 CA003-Admin-Compliant:      Not applicable (not admin)
 CA004-Block-High-Risk:      ✅ Applied — Not blocked
                                         (risk was LOW)
 
-──────────────────────────────────────────────────────
+───────
 DEVICE INFO TAB:
-──────────────────────────────────────────────────────
+───────
 Device ID:         abc123-def456-...
 Device name:       GANI-LAPTOP
 Operating system:  Windows 11
@@ -243,23 +243,23 @@ Compliant:         Yes ✅
 Managed by:        Intune ✅
 Browser:           Chrome 123
 
-──────────────────────────────────────────────────────
+───────
 SIGN-IN RISK TAB:                     ← ENTRA ID P2
 ──────────────────────────────────────────────────────
 Sign-in risk level:   Low
 Risk detections:      None
 Risk detail:          None
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━
 
 THIS IS A CLEAN LOGIN.
 Now let's see what a SUSPICIOUS login looks like.
 
 The Same Login — But Something Is Wrong
 SUSPICIOUS SIGN-IN LOG ENTRY — Gani at 2 AM:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━
 
 BASIC INFO TAB:
-──────────────────────────────────────────────────────
+───────
 Date:               06/04/2026  02:17:44 IST
 User:               gani@securecorp.com
 Application:        Microsoft Teams
@@ -269,28 +269,28 @@ Location:           Amsterdam, NL          ← 🚨 Not India!
 Status:             Failure
 Error code:         53003                  ← Blocked by CA
 
-──────────────────────────────────────────────────────
+─────
 AUTHENTICATION DETAILS TAB:
-──────────────────────────────────────────────────────
+─────
 Authentication requirement: Single factor  ← 🚨 No MFA!
 MFA result:               Not attempted   ← 🚨
 Auth method:              Password only
 Token issuer type:        Azure AD
 
-──────────────────────────────────────────────────────
+──────
 CONDITIONAL ACCESS TAB:
-──────────────────────────────────────────────────────
+──────
 CA001-Block-Legacy-Auth:  ✅ Applied → BLOCKED  ← saved us!
 
-──────────────────────────────────────────────────────
+───────
 SIGN-IN RISK TAB:
-──────────────────────────────────────────────────────
+───────
 Sign-in risk level:  HIGH  🚨
 Risk detections:
   → Anonymous IP address (Tor)
   → Unfamiliar sign-in properties
   → Atypical travel
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━
 
 WHAT NAVI READS FROM THIS:
 → Attacker has Gani's password
