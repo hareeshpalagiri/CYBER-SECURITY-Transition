@@ -217,6 +217,7 @@ Conditional Access: Success                ✅
 ──────
 AUTHENTICATION DETAILS TAB:           ← YOU NEED THIS TAB
 ──────
+
 Authentication requirement: Multifactor auth  ✅
 MFA result:               MFA satisfied       ✅
 Auth method:              Authenticator app   ✅
@@ -227,6 +228,7 @@ Resource:                 Microsoft Teams
 ─────
 CONDITIONAL ACCESS TAB:               ← CRITICAL FOR SOC
 ─────
+
 CA001-Block-Legacy-Auth:    Not applied (modern auth)
 CA002-Require-MFA-All:      ✅ Applied — Satisfied
 CA003-Admin-Compliant:      Not applicable (not admin)
@@ -236,6 +238,7 @@ CA004-Block-High-Risk:      ✅ Applied — Not blocked
 ───────
 DEVICE INFO TAB:
 ───────
+
 Device ID:         abc123-def456-...
 Device name:       GANI-LAPTOP
 Operating system:  Windows 11
@@ -245,7 +248,8 @@ Browser:           Chrome 123
 
 ───────
 SIGN-IN RISK TAB:                     ← ENTRA ID P2
-──────────────────────────────────────────────────────
+──────
+
 Sign-in risk level:   Low
 Risk detections:      None
 Risk detail:          None
@@ -256,10 +260,11 @@ Now let's see what a SUSPICIOUS login looks like.
 
 The Same Login — But Something Is Wrong
 SUSPICIOUS SIGN-IN LOG ENTRY — Gani at 2 AM:
-━━━━━━━
+━━━━━━
 
 BASIC INFO TAB:
 ───────
+
 Date:               06/04/2026  02:17:44 IST
 User:               gani@securecorp.com
 Application:        Microsoft Teams
@@ -272,6 +277,7 @@ Error code:         53003                  ← Blocked by CA
 ─────
 AUTHENTICATION DETAILS TAB:
 ─────
+
 Authentication requirement: Single factor  ← 🚨 No MFA!
 MFA result:               Not attempted   ← 🚨
 Auth method:              Password only
@@ -280,17 +286,20 @@ Token issuer type:        Azure AD
 ──────
 CONDITIONAL ACCESS TAB:
 ──────
+
 CA001-Block-Legacy-Auth:  ✅ Applied → BLOCKED  ← saved us!
 
 ───────
 SIGN-IN RISK TAB:
 ───────
+
 Sign-in risk level:  HIGH  🚨
 Risk detections:
   → Anonymous IP address (Tor)
   → Unfamiliar sign-in properties
   → Atypical travel
 ━━━━━━
+
 
 WHAT NAVI READS FROM THIS:
 → Attacker has Gani's password
